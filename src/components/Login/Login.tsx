@@ -1,8 +1,9 @@
 "use client";
 import React, { useContext } from "react";
 import { Button, Card, Checkbox, Form, Input } from "antd";
-import { loginUser } from "@/utils";
+
 import { Context } from "@/app/layout";
+import { loginUser } from "@/utils";
 
 type FieldType = {
   username?: string;

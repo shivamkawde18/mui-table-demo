@@ -1,6 +1,5 @@
 "use client";
 
-import { getData } from "@/services/data/data";
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -10,13 +9,14 @@ import {
 } from "material-react-table";
 import { sortingOrderHandler } from "@/utils/sort";
 import { Button, Input } from "antd";
+import { getData } from "@/services/data";
 
 export const Home = () => {
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = React.useState("");
   const user = localStorage.getItem("user");
-
+  console.log(list);
   const gettingData = async () => {
     if (user) {
       return await getData(user);
