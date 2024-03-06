@@ -17,7 +17,8 @@ export const Login: React.FC = () => {
     try {
       const token = await loginUser(values.username, values.password);
       setIsLogin(token.token);
-      localStorage.setItem('user',token.token)
+      localStorage.setItem("user", token.token);
+      localStorage.setItem("name", values.username);
     } catch (err) {
       alert("something went wrong");
     }
@@ -35,7 +36,7 @@ export const Login: React.FC = () => {
         alignItems: "center",
       }}
     >
-      <h3>{isLogin}</h3>
+      <h3>Login</h3>
       <Card
         bordered={true}
         style={{

@@ -3,7 +3,7 @@ import { Context } from "@/app/layout";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
 
-const PrivateRoute = ({ children }) => {
+const PrivateRoute = ({ children }:any) => {
   const router = useRouter();
 
 

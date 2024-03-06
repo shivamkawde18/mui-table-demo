@@ -8,7 +8,7 @@ import { Table } from "..";
 export const Home = () => {
   const [list, setList] = useState([]);
   const user = localStorage.getItem("user");
-  console.log(user, "hiiii");
+
   const gettingData = async () => {
     if (user) {
       return await getData(user);
