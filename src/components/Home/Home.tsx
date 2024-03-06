@@ -1,6 +1,6 @@
 "use client";
 
-import { getData } from "@/utils/data/data";
+import { getData } from "@/services/data/data";
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -13,6 +13,7 @@ import { Button, Input } from "antd";
 
 export const Home = () => {
   const [list, setList] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = React.useState("");
   const user = localStorage.getItem("user");
 
@@ -28,6 +29,7 @@ export const Home = () => {
         try {
           const data = await gettingData();
           setList(data.data);
+          setLoading(false);
         } catch (error) {
           alert("something went wrong");
         }
@@ -243,29 +245,27 @@ export const Home = () => {
   const table = useMaterialReactTable({
     columns,
     data: filteredData.length > 0 ? filteredData : list,
+    state: {
+      isLoading: loading,
+    },
     enablePagination: false,
     enableBottomToolbar: false,
     enableColumnResizing: false,
     enableDensityToggle: false,
     enableFullScreenToggle: false,
     enableColumnActions: false,
-    enableRowSelection:true
+    enableRowSelection: true,
   });
 
   return (
     <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
+      <div className="home-container">
         <Input
           type="text"
           placeholder="Search by Lot ID"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
-          style={{ width: 300, marginTop: 20, marginBottom: 20, height: 45 }}
+          className="search-input"
         />
         <div>
           <h3>{localStorage.getItem("name")}</h3>
@@ -275,7 +275,7 @@ export const Home = () => {
               localStorage.removeItem("name");
               router.push("/");
             }}
-            style={{ marginTop: 10, marginBottom: 20 }}
+            className="logout-btn"
           >
             Logout
           </Button>

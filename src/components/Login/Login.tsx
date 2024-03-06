@@ -11,7 +11,7 @@ type FieldType = {
 };
 
 export const Login: React.FC = () => {
-  const {setIsLogin } = useContext(Context);
+  const { setIsLogin } = useContext(Context);
 
   const onFinish = async (values: any) => {
     try {
@@ -27,23 +27,9 @@ export const Login: React.FC = () => {
     alert("something went wrong");
   };
   return (
-    <div
-      style={{
-        display: "flex",
-        height: 600,
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <div className="login-container">
       <h3>Login</h3>
-      <Card
-        bordered={true}
-        style={{
-          width: 700,
-          paddingTop: 50,
-        }}
-      >
+      <Card bordered={true} className="login-card">
         <Form
           name="basic"
           labelCol={{ span: 8 }}
@@ -57,7 +43,7 @@ export const Login: React.FC = () => {
           <Form.Item<FieldType>
             label="Username"
             name="username"
-            initialValue={"kgk_user"}
+            initialValue={process.env.USERNAME}
             rules={[
               {
                 required: true,
@@ -71,7 +57,7 @@ export const Login: React.FC = () => {
           <Form.Item<FieldType>
             label="Password"
             name="password"
-            initialValue={"xKcD!"}
+            initialValue={process.env.PASSWORD}
             rules={[{ required: true, message: "Please input your password!" }]}
           >
             <Input.Password />
