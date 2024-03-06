@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+
 import { Login } from "@/components";
 import { useContext, useEffect } from "react";
 
@@ -9,7 +9,7 @@ export default function Home() {
   const { isLogin } = useContext(Context);
   const router = useRouter();
   useEffect(() => {
-    if (localStorage.getItem('user')) {
+    if (localStorage.getItem("user")) {
       router.push("/home");
     }
   }, [isLogin]);

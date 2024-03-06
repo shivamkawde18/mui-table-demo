@@ -11,7 +11,7 @@ type FieldType = {
 };
 
 export const Login: React.FC = () => {
-  const { isLogin, setIsLogin } = useContext(Context);
+  const {setIsLogin } = useContext(Context);
 
   const onFinish = async (values: any) => {
     try {
